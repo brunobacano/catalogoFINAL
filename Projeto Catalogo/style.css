@@ -1,0 +1,278 @@
+/* --------------------------
+   Reset geral
+--------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: none; /* vamos mover o fundo para o ::before */
+  
+  
+}
+
+/* Fundo + camada escura + blur */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url('img/cinema_fundo.jpg') center center / cover no-repeat;
+  filter: blur(3px);
+  z-index: -1;
+  will-change: transform; /* melhora performance */
+}
+
+
+
+/* --------------------------
+   Navbar
+--------------------------- */
+.navbar {
+  background-color: #1c1c1c !important; /* ESCURO */
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  transition: 0.3s;
+}
+
+.navbar-brand:hover {
+  color: #fff !important;
+}
+
+/* Botões da navbar */
+.btn {
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
+}
+
+/* --------------------------
+   Cards principais
+--------------------------- */
+.card-link {
+  text-decoration: none;
+}
+
+.custom-card {
+  background-color: #2a2a2a; /* cinza escuro médio */
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 65px;
+  height: 100%;
+  transition: transform 0.5s, box-shadow 0.3s;
+  color: #ffffff;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(255, 204, 0, 0.3);
+}
+
+
+/* --------------------------
+   Footer
+--------------------------- */
+footer {
+  background-color: #1c1c1c;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+/* --------------------------
+   Páginas de login/cadastro
+--------------------------- */
+.container-auth {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Painel esquerdo */
+.left-panel {
+  background: #000;
+  color: white;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0% 100%);
+  position: relative;
+}
+
+.left-panel img {
+  width: 260px;
+  max-width: 50%;
+  height: auto;
+}
+
+/* Área da direita */
+.right-side {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.right-side h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+.mobile-logo {
+  display: none;
+  width: 160px;
+  margin-bottom: 15px;
+}
+
+.right-side form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 320px;
+}
+
+.right-side input {
+  margin: 10px 0;
+  padding: 12px;
+  border: 1px solid #919191;
+  border-radius: 6px;
+  transition: border 0.2s;
+}
+
+.right-side input:focus {
+  outline: none;
+  border-color: #fcc81e;
+  box-shadow: 0px 0px 6px rgba(252, 200, 30, 0.4);
+}
+
+.right-side button {
+  background: #fcc81e;
+  color: #111;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.right-side button:hover {
+  background: #ddaf18;
+  color: #fff;
+}
+
+.home-btn {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  color: #ddaf18;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.home-btn:hover {
+  color: #b58f14;
+}
+
+/* --------------------------
+   Responsividade
+--------------------------- */
+@media (max-width: 650px) {
+  .left-panel {
+    display: none;
+  }
+
+  .mobile-logo {
+    display: block;
+  }
+
+  .cart-panel {
+    width: 70%;
+    right: -70%;
+  }
+
+  .cart-panel.open {
+    right: 0;
+  }
+
+  .cart-panel.open ~ .cart-btn {
+    right: 70%;
+  }
+}
+.stark{
+  text-align: center;
+  color: #fcc81e;
+}
+/* Deixar os cards dos alimentos com fundo cinza escuro igual à navbar */
+.card {
+  background-color: #1c1c1c !important; /* mesma cor da navbar */
+  color: #fff; /* texto branco para contraste */
+  border: 1px solid #333; /* leve borda para separar */
+}
+
+/* Ajuste para títulos e textos dentro do card */
+.card-title {
+  color: #ffc107; /* amarelo do tema */
+}
+
+.card-text {
+  color: #ddd; /* texto mais claro */
+}
+/* Remove o fundo somente na tela de login */
+.loregister-page::before {
+    display: none !important;
+}
+
+/* Correção de Layout para garantir que o Bootstrap grid funcione */
+.container {
+    max-width: 1140px; /* Garante a largura padrão do Bootstrap */
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Garante que o row não seja afetado por display flex/grid globais */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.card-link {
+    text-decoration: none;
+    /* REMOVA display: block; */
+    /* REMOVA height: 100%; */
+}
